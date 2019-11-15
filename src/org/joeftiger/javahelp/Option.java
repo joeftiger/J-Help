@@ -44,6 +44,7 @@ public class Option {
 	 * @return {@code true} if match. {@code false} if not.
 	 */
 	public boolean matchesInvoke(String input) {
+		if (optionInvoke == null) return false;
 		return Arrays.asList(optionInvoke.invokes).contains(input);
 	}
 
@@ -54,6 +55,7 @@ public class Option {
 	 * @return {@code true} if match. {@code false} if not.
 	 */
 	public boolean matchesParameter(String input) {
+		if (optionParameter == null) return false;
 		return Arrays.asList(optionParameter.options).contains(input);
 	}
 
