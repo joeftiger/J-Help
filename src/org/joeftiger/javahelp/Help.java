@@ -55,12 +55,13 @@ public class Help {
 		StringBuilder sb = new StringBuilder();
 
 		if (usage != null) {
-			sb.append(usage).append("\n\n");
+			sb.append(usage);
 		}
 
 		if (!options.isEmpty()) {
 			String[] opts = options.stream().map(Object::toString).toArray(String[]::new);
-			sb.append("OPTIONS:")
+			sb.append("\n\n")
+					.append("OPTIONS:")
 					.append("\n")
 					.append(String.join("\n", opts));
 		}

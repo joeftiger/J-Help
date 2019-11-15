@@ -33,7 +33,7 @@ public class Usage {
 		String out = "USAGE:\n " + programName + " [options]";
 
 		if (!targets.isEmpty()) {
-			out += "<" + String.join("> <", targets) + ">";
+			out += " <" + String.join("> <", targets) + ">";
 		}
 
 		return out;
