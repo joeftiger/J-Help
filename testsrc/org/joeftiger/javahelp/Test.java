@@ -5,7 +5,8 @@ public class Test {
 		Option o1 = new OptionBuilder()
 				.addInvokes("-c", "--count")
 				.setParameterType(Integer.class)
-				.setDescription("This is a very long description intended to fill up the line, such that it will be split up on words accordingly.")
+				.setDescription("This is a very long description intended to fill up the line, such that it will be split up on words accordingly." +
+				                "(Only if specified by help.toString(indent1, indent2, limit)")
 				.build();
 		Option o2 = new OptionBuilder()
 				.addInvokes("-m", "--method")
