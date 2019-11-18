@@ -27,13 +27,20 @@ public class Option {
 	}
 
 	public String toString(int indent, int descriptionIndent) {
+		return toString(indent, descriptionIndent, 81);
+	}
+
+	public String toString(int indent, int descriptionIndent, int limit) {
 		String out = String.format("%s %s", optionInvoke, optionParameter);
 
+		String[] descriptionLines = StringUtil.splitPreservingWords(this.description, limit - descriptionIndent);
+		String desc = String.join("\n" + " ".repeat(descriptionIndent), descriptionLines);
+
 		if (out.length() >= descriptionIndent) {
-			return " ".repeat(indent) + out + "\n" + " ".repeat(descriptionIndent) + description;
+			return " ".repeat(indent) + out + "\n" + " ".repeat(descriptionIndent) + desc;
 		} else {
 			out = " ".repeat(indent) + out;
-			return out + " ".repeat(descriptionIndent - out.length()) + description;
+			return out + " ".repeat(descriptionIndent - out.length()) + desc;
 		}
 	}
 
@@ -82,7 +89,7 @@ public class Option {
 
 		@Override
 		public String toString() {
-			return String.join(",", invokes);
+			return String.join(", ", invokes);
 		}
 	}
 
@@ -100,12 +107,13 @@ public class Option {
 
 		@Override
 		public String toString() {
+			String format = "{%s}";
 			if (Class != null) {
-				return Class.getSimpleName();
+				return String.format(format, Class.getSimpleName());
 			}
 			if (options == null || options.length == 0) return "";
 
-			return "{" + String.join(",", options) + "}";
+			return String.format(format, String.join(",", options));
 		}
 	}
 }
