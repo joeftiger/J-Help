@@ -27,7 +27,7 @@ public class Option {
 	}
 
 	public String toString(int indent, int descriptionIndent) {
-		return toString(indent, descriptionIndent, 81);
+		return toString(indent, descriptionIndent, 1024);
 	}
 
 	public String toString(int indent, int descriptionIndent, int limit) {
