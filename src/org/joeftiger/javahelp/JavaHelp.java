@@ -1,14 +1,10 @@
 package org.joeftiger.javahelp;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
- * A help consists of a {@link HelpUsage} and multiple {@link HelpOption}s (created with the help of {@link HelpOptionBuilder}.
- * It can be queried for {@link #getOptionByInvoke(String)}.
+ * A help consists of a {@link HelpUsage} and multiple {@link HelpOption}s (created with the help of {@link
+ * HelpOptionBuilder}. It can be queried for {@link #getOptionByInvoke(String)}.
  *
  * @author Julius Oeftiger
  * @version 0.1
@@ -61,42 +57,6 @@ public class JavaHelp {
 	}
 
 	/**
-	 * Sets the indent for options. If the given indent is negative, it will be clamped to {@code 0}.
-	 * The default is {@link #indent}.
-	 *
-	 * @param indent new indent
-	 * @return this JavaHelp
-	 */
-	public JavaHelp setOptionIndent(int indent) {
-		this.indent = Math.max(0, indent);
-		return this;
-	}
-
-	/**
-	 * Sets the indent for option descriptions. If the given indent is negative, it will be clamped to {@code 0}.
-	 * The default is {@link #descriptionIndent}.
-	 *
-	 * @param indent new description indent
-	 * @return this JavaHelp
-	 */
-	public JavaHelp setDescriptionIndent(int indent) {
-		this.descriptionIndent = Math.max(0, indent);
-		return this;
-	}
-
-	/**
-	 * Sets the limit for description paragraphs. Will be clamped to ({@link #descriptionIndent} {@code + 10}) if below.
-	 * The default is {@link #paragraphLimit}.
-	 *
-	 * @param limit new paragraph limit
-	 * @return this JavaHelp
-	 */
-	public JavaHelp setParagraphLimit(int limit) {
-		this.paragraphLimit = Math.max(descriptionIndent + 10, limit);
-		return this;
-	}
-
-	/**
 	 * Returns whether an option contains the given input invoke.
 	 *
 	 * @param input invoke to search for
@@ -113,8 +73,8 @@ public class JavaHelp {
 	}
 
 	/**
-	 * Returns the option exactly matching the given input invoke.
-	 * If no matching option is found, an exception will be raised.
+	 * Returns the option exactly matching the given input invoke. If no matching option is found, an exception will be
+	 * raised.
 	 *
 	 * @param input invoke to search for
 	 * @return matching option
@@ -162,5 +122,41 @@ public class JavaHelp {
 
 
 		return sb.toString();
+	}
+
+	/**
+	 * Sets the indent for options. If the given indent is negative, it will be clamped to {@code 0}. The default is
+	 * {@link #indent}.
+	 *
+	 * @param indent new indent
+	 * @return this JavaHelp
+	 */
+	public JavaHelp setOptionIndent(int indent) {
+		this.indent = Math.max(0, indent);
+		return this;
+	}
+
+	/**
+	 * Sets the indent for option descriptions. If the given indent is negative, it will be clamped to {@code 0}. The
+	 * default is {@link #descriptionIndent}.
+	 *
+	 * @param indent new description indent
+	 * @return this JavaHelp
+	 */
+	public JavaHelp setDescriptionIndent(int indent) {
+		this.descriptionIndent = Math.max(0, indent);
+		return this;
+	}
+
+	/**
+	 * Sets the limit for description paragraphs. Will be clamped to ({@link #descriptionIndent} {@code + 10}) if below.
+	 * The default is {@link #paragraphLimit}.
+	 *
+	 * @param limit new paragraph limit
+	 * @return this JavaHelp
+	 */
+	public JavaHelp setParagraphLimit(int limit) {
+		this.paragraphLimit = Math.max(descriptionIndent + 10, limit);
+		return this;
 	}
 }

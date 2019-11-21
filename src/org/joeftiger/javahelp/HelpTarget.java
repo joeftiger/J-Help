@@ -19,11 +19,11 @@ public class HelpTarget {
 	/**
 	 * Creates a HelpTarget
 	 *
-	 * @param target target name
+	 * @param target   target name
 	 * @param callback callback. may be {@code null}
 	 */
 	public HelpTarget(String target, Consumer<String> callback) {
-		this.target = target ==  null ? "null" : target;
+		this.target = target == null ? "null" : target;
 		this.callback = callback;
 	}
 

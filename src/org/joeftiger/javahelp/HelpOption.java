@@ -34,7 +34,7 @@ public class HelpOption {
 	}
 
 	/**
-	 * @param indent identation
+	 * @param indent            identation
 	 * @param descriptionIndent description identation
 	 * @return {@link #toString(int indent, int descriptionIndent, int 1024)}
 	 */
@@ -43,10 +43,9 @@ public class HelpOption {
 	}
 
 	/**
-	 *
-	 * @param indent indent
+	 * @param indent            indent
 	 * @param descriptionIndent description indent
-	 * @param paragraphLimit paragraph limit (before line break in description)
+	 * @param paragraphLimit    paragraph limit (before line break in description)
 	 * @return printable form of this Option
 	 */
 	public String toString(int indent, int descriptionIndent, int paragraphLimit) {
@@ -82,10 +81,6 @@ public class HelpOption {
 		return optionInvoke.matches(input);
 	}
 
-	public boolean hasParameter() {
-		return optionParameter != null;
-	}
-
 	/**
 	 * Returns whether this option has the given input as valid parameter.
 	 *
@@ -98,6 +93,10 @@ public class HelpOption {
 			return false;
 		}
 		return optionParameter.matches(input);
+	}
+
+	public boolean hasParameter() {
+		return optionParameter != null;
 	}
 
 	public Consumer<String> getCallback() {
@@ -165,14 +164,22 @@ public class HelpOption {
 		public boolean matches(String param) {
 			if (Class != null) {
 				switch (Class) {
-					case "Byte": return StringUtil.isByte(param);
-					case "Short": return StringUtil.isShort(param);
-					case "Integer": return StringUtil.isInteger(param);
-					case "Long": return StringUtil.isLong(param);
-					case "Float": return StringUtil.isFloat(param);
-					case "Double": return StringUtil.isDouble(param);
-					case "Character": return StringUtil.isCharacter(param);
-					default: return true;
+					case "Byte":
+						return StringUtil.isByte(param);
+					case "Short":
+						return StringUtil.isShort(param);
+					case "Integer":
+						return StringUtil.isInteger(param);
+					case "Long":
+						return StringUtil.isLong(param);
+					case "Float":
+						return StringUtil.isFloat(param);
+					case "Double":
+						return StringUtil.isDouble(param);
+					case "Character":
+						return StringUtil.isCharacter(param);
+					default:
+						return true;
 				}
 			}
 

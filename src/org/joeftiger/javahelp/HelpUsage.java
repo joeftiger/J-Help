@@ -64,17 +64,6 @@ public class HelpUsage {
 	}
 
 	/**
-	 * Returns the target at the specified position.
-	 *
-	 * @param index index of target
-	 * @return target at the specified position
-	 * @throws IndexOutOfBoundsException if the index is out of range ({@code index < 0 || index >= numberOfTargets()})
-	 */
-	public HelpTarget getTarget(int index) throws IndexOutOfBoundsException {
-		return targets.get(index);
-	}
-
-	/**
 	 * Returns whether there exists a next target using the built-in index.
 	 *
 	 * @return {@code true} if next target exists. {@code false} if not.
@@ -89,12 +78,23 @@ public class HelpUsage {
 	 * Returns the next target and increases the built-int index.
 	 *
 	 * @return next target
+	 * @throws IndexOutOfBoundsException if built-in index is out of range
 	 * @see #hasNextTarget()
 	 * @see #resetNextTarget()
-	 * @throws IndexOutOfBoundsException if built-in index is out of range
 	 */
 	public HelpTarget getNextTarget() throws IndexOutOfBoundsException {
 		return getTarget(index++);
+	}
+
+	/**
+	 * Returns the target at the specified position.
+	 *
+	 * @param index index of target
+	 * @return target at the specified position
+	 * @throws IndexOutOfBoundsException if the index is out of range ({@code index < 0 || index >= numberOfTargets()})
+	 */
+	public HelpTarget getTarget(int index) throws IndexOutOfBoundsException {
+		return targets.get(index);
 	}
 
 	/**
