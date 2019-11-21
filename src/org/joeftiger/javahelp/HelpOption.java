@@ -55,15 +55,18 @@ public class HelpOption {
 			out += " " + optionParameter;
 		}
 
-		String[] descriptionLines = StringUtil.splitPreservingWords(this.description, paragraphLimit - descriptionIndent);
-		String desc = String.join("\n" + " ".repeat(descriptionIndent), descriptionLines);
+		if (description != null && !description.isBlank()) {
+			String[] descriptionLines = StringUtil.splitPreservingWords(this.description, paragraphLimit - descriptionIndent);
+			String desc = String.join("\n" + " ".repeat(descriptionIndent), descriptionLines);
 
-		if (out.length() >= descriptionIndent - indent) {
-			return " ".repeat(indent) + out + "\n" + " ".repeat(descriptionIndent) + desc;
-		} else {
-			out = " ".repeat(indent) + out;
-			return out + " ".repeat(Math.max(0, descriptionIndent - out.length())) + desc;
+			if (out.length() >= descriptionIndent - indent) {
+				return " ".repeat(indent) + out + "\n" + " ".repeat(descriptionIndent) + desc;
+			} else {
+				out = " ".repeat(indent) + out;
+				return out + " ".repeat(Math.max(0, descriptionIndent - out.length())) + desc;
+			}
 		}
+		return " ".repeat(indent) + out;
 	}
 
 	/**

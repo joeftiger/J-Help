@@ -13,7 +13,8 @@ public class HelpUsage {
 
 	public HelpUsage() {
 		targets = new ArrayList<>();
-		setProgramName(new java.io.File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
+		var stack = Thread.currentThread().getStackTrace();
+		setProgramName(null);
 	}
 
 	public String getProgramName() {

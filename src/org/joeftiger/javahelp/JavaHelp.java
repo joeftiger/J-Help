@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 /**
  * A help consists of a {@link HelpUsage} and multiple {@link HelpOption}s (created with the help of {@link HelpOptionBuilder}.
- * It can be queried for {@link #getOptionInvoke(String)}.
+ * It can be queried for {@link #getOptionByInvoke(String)}.
  *
  * @author Julius Oeftiger
  * @version 0.1
@@ -120,7 +120,7 @@ public class JavaHelp {
 	 * @return matching option
 	 * @throws NoSuchElementException if no option matches the given inp ut
 	 */
-	public HelpOption getOptionInvoke(String input) throws NoSuchElementException {
+	public HelpOption getOptionByInvoke(String input) throws NoSuchElementException {
 		for (HelpOption o : options) {
 			if (o.matchesInvoke(input)) {
 				return o;
