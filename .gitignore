@@ -3,3 +3,6 @@
 
 # compilation
 out/
+
+# Libraries
+lib/
