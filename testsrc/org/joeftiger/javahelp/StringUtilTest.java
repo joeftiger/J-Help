@@ -30,16 +30,44 @@ class StringUtilTest {
 	}
 
 	@Test
+	void isByte() {
+		assertFalse(StringUtil.isByte("false"));
+		assertFalse(StringUtil.isByte(String.valueOf(Long.MAX_VALUE)));
+		assertTrue(StringUtil.isByte(String.valueOf(Byte.MAX_VALUE)));
+	}
+
+	@Test
+	void isShort() {
+		assertFalse(StringUtil.isShort("false"));
+		assertFalse(StringUtil.isShort(String.valueOf(Long.MAX_VALUE)));
+		assertTrue(StringUtil.isShort(String.valueOf(Short.MAX_VALUE)));
+	}
+
+	@Test
+	void isInteger() {
+		assertFalse(StringUtil.isInteger("false"));
+		assertFalse(StringUtil.isInteger(String.valueOf(Long.MAX_VALUE)));
+		assertTrue(StringUtil.isInteger(String.valueOf(Integer.MAX_VALUE)));
+	}
+
+	@Test
 	void isLong() {
 		assertFalse(StringUtil.isLong("false"));
-		assertTrue(StringUtil.isLong("10"));
+		assertTrue(StringUtil.isLong(String.valueOf(Long.MAX_VALUE)));
+	}
+
+	@Test
+	void isFloat() {
+		assertFalse(StringUtil.isFloat("false"));
+		assertTrue(StringUtil.isFloat(String.valueOf(Long.MAX_VALUE)));
+		assertTrue(StringUtil.isFloat(String.valueOf(Double.MAX_VALUE)));
 	}
 
 	@Test
 	void isDouble() {
 		assertFalse(StringUtil.isDouble("false"));
-		assertTrue(StringUtil.isDouble("10"));
-		assertTrue(StringUtil.isDouble("10.205"));
+		assertTrue(StringUtil.isDouble(String.valueOf(Long.MAX_VALUE)));
+		assertTrue(StringUtil.isDouble(String.valueOf(Double.MAX_VALUE)));
 	}
 
 	@Test
