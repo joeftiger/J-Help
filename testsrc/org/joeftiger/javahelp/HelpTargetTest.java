@@ -11,10 +11,10 @@ class HelpTargetTest {
 
 	private HelpTarget nullTarget;
 	private HelpTarget target;
+	private boolean passedCallbackCheck;
 	private final Consumer<String> callback = s -> {
 		passedCallbackCheck = s.equalsIgnoreCase("success");
 	};
-	private boolean passedCallbackCheck;
 
 	@BeforeEach
 	void setUp() {

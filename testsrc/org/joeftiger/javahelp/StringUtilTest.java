@@ -2,18 +2,13 @@ package org.joeftiger.javahelp;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringUtilTest {
 
-	private final String text = "There two types of people in the world. Those who can extrapolate from incomplete data";
-
-
 	@Test
 	void splitPreservingWords() {
-		String[] out = StringUtil.splitPreservingWords(text, 10);
+		String[] out = StringUtil.splitPreservingWords("There two types of people in the world. Those who can extrapolate from incomplete data", 10);
 		final String[] expected = {
 				"There two",
 				"types of",

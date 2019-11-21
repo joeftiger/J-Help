@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HelpOptionTest {
 
-	private HelpOption option;
 	private final String description = "This is a long description meant to confuse the reader.";
+	private HelpOption option;
+	private boolean passedCallbackCheck;
 	private final Consumer<String> callback = s -> {
 		passedCallbackCheck = s.equalsIgnoreCase("success");
 	};
-	private boolean passedCallbackCheck;
 
 	@BeforeEach
 	void setUp() {
@@ -37,6 +37,7 @@ class HelpOptionTest {
 		final String expected = " -h, --help             " + description;
 		assertEquals(expected, option.toString(1));
 	}
+
 	@Test
 	void testToStringIndent24() {
 		final String start = " ".repeat(24) + "-h, --help\n";

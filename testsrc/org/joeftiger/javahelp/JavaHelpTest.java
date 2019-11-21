@@ -4,30 +4,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
-import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class JavaHelpTest {
 
-	private Consumer<String> targetCallback = s -> {
-		targetSuccess = s.equalsIgnoreCase("success");
-	};
-	private boolean targetSuccess;
-
-	private Consumer<String> optionCallback = s -> {
-		optionSuccess = s.equalsIgnoreCase("success");
-	};
-	private boolean optionSuccess;
-
 	private JavaHelp help;
-	private HelpTarget target = new HelpTarget("empty", targetCallback);
+	private HelpTarget target = new HelpTarget("empty");
 	private HelpUsage usage = new HelpUsage()
 			.addTargets(target);
 	private HelpOption option = new HelpOptionBuilder()
 			.addInvokes("-c", "--callback")
 			.setDescription("description")
-			.setCallback(optionCallback).build();
+			.build();
 
 	@BeforeEach
 	void setUp() {
