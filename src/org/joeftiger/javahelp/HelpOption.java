@@ -165,18 +165,14 @@ public class HelpOption {
 		public boolean matches(String param) {
 			if (Class != null) {
 				switch (Class) {
-					case "Byte":
-					case "Short":
-					case "Integer":
-					case "Long":
-						return StringUtil.isLong(param);
-					case "Float":
-					case "Double":
-						return StringUtil.isDouble(param);
-					case "Character":
-						return StringUtil.isCharacter(param);
-					default:
-						return true;
+					case "Byte": return StringUtil.isByte(param);
+					case "Short": return StringUtil.isShort(param);
+					case "Integer": return StringUtil.isInteger(param);
+					case "Long": return StringUtil.isLong(param);
+					case "Float": return StringUtil.isFloat(param);
+					case "Double": return StringUtil.isDouble(param);
+					case "Character": return StringUtil.isCharacter(param);
+					default: return true;
 				}
 			}
 
