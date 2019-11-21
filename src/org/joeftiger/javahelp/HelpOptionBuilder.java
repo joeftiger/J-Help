@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class OptionBuilder {
+public class HelpOptionBuilder {
 
 	private List<String> optionInvokes;
 	private Class<?> parameterType;
@@ -13,7 +13,7 @@ public class OptionBuilder {
 	private Consumer<String> callback;
 	private String description = "";
 
-	public OptionBuilder() {
+	public HelpOptionBuilder() {
 		optionInvokes = new ArrayList<>();
 		parameters = new ArrayList<>();
 	}
@@ -28,7 +28,7 @@ public class OptionBuilder {
 	 * @param invokes invoke aliases
 	 * @return this builder
 	 */
-	public OptionBuilder addInvokes(String... invokes) {
+	public HelpOptionBuilder addInvokes(String... invokes) {
 		Collections.addAll(optionInvokes, invokes);
 		return this;
 	}
@@ -40,7 +40,7 @@ public class OptionBuilder {
 	 * @return this builder
 	 * @see #addParameters(String...)
 	 */
-	public OptionBuilder setParameterType(Class<?> type) {
+	public HelpOptionBuilder setParameterType(Class<?> type) {
 		parameterType = type;
 		return this;
 	}
@@ -51,9 +51,9 @@ public class OptionBuilder {
 	 * @param parameters possible parameters
 	 * @return this builder
 	 * @see #setParameterType(Class)
-	 * @see Option#matchesParameter(String)
+	 * @see HelpOption#matchesParameter(String)
 	 */
-	public OptionBuilder addParameters(String... parameters) {
+	public HelpOptionBuilder addParameters(String... parameters) {
 		Collections.addAll(this.parameters, parameters);
 		return this;
 	}
@@ -64,7 +64,7 @@ public class OptionBuilder {
 	 * @param description option description
 	 * @return this builder
 	 */
-	public OptionBuilder setDescription(String description) {
+	public HelpOptionBuilder setDescription(String description) {
 		this.description = description;
 		return this;
 	}
@@ -75,7 +75,7 @@ public class OptionBuilder {
 	 * @param callback callback function
 	 * @return this builder
 	 */
-	public OptionBuilder setCallback(Consumer<String> callback) {
+	public HelpOptionBuilder setCallback(Consumer<String> callback) {
 		this.callback = callback;
 		return this;
 	}
@@ -85,16 +85,16 @@ public class OptionBuilder {
 	 *
 	 * @return option
 	 */
-	public Option build() {
-		Option.OptionInvoke invoke = new Option.OptionInvoke(optionInvokes.toArray(String[]::new));
+	public HelpOption build() {
+		HelpOption.OptionInvoke invoke = new HelpOption.OptionInvoke(optionInvokes.toArray(String[]::new));
 
-		Option.OptionParameter parameter;
+		HelpOption.OptionParameter parameter;
 		if (parameterType != null) {
-			parameter = new Option.OptionParameter(parameterType);
+			parameter = new HelpOption.OptionParameter(parameterType);
 		} else {
-			parameter = new Option.OptionParameter(this.parameters.toArray(String[]::new));
+			parameter = new HelpOption.OptionParameter(this.parameters.toArray(String[]::new));
 		}
 
-		return new Option(invoke, parameter, description, callback);
+		return new HelpOption(invoke, parameter, description, callback);
 	}
 }

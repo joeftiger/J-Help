@@ -24,4 +24,26 @@ public class StringUtil {
 
 		return lines.toArray(String[]::new);
 	}
+
+	public static boolean isLong(String s) {
+		try {
+			Long.parseLong(s);
+			return true;
+		} catch (NumberFormatException | NullPointerException ignored) {
+			return false;
+		}
+	}
+
+	public static boolean isDouble(String s) {
+		try {
+			Double.parseDouble(s);
+			return true;
+		} catch (NumberFormatException | NullPointerException ignored) {
+			return false;
+		}
+	}
+
+	public static boolean isCharacter(String s) {
+		return s != null && s.length() == 1;
+	}
 }
