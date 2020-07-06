@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Class-Path: org.joeftiger.javahelp
-Main-Class: org.joeftiger.javahelp.Test
+Class-Path: org.joeftiger.jhelp
+Main-Class: org.joeftiger.jhelp.Test

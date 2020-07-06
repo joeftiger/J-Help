@@ -1,14 +1,14 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
 
 public class HelpOption {
 
-	private OptionInvoke optionInvoke;
-	private OptionParameter optionParameter;
-	private String description;
-	private Consumer<String> callback;
+	private final OptionInvoke optionInvoke;
+	private final OptionParameter optionParameter;
+	private final String description;
+	private final Consumer<String> callback;
 
 	public HelpOption(OptionInvoke optionInvoke, OptionParameter optionParameter, String description, Consumer<String> callback) {
 		this.optionInvoke = optionInvoke;
@@ -163,24 +163,16 @@ public class HelpOption {
 		 */
 		public boolean matches(String param) {
 			if (Class != null) {
-				switch (Class) {
-					case "Byte":
-						return StringUtil.isByte(param);
-					case "Short":
-						return StringUtil.isShort(param);
-					case "Integer":
-						return StringUtil.isInteger(param);
-					case "Long":
-						return StringUtil.isLong(param);
-					case "Float":
-						return StringUtil.isFloat(param);
-					case "Double":
-						return StringUtil.isDouble(param);
-					case "Character":
-						return StringUtil.isCharacter(param);
-					default:
-						return true;
-				}
+				return switch (Class) {
+					case "Byte" -> StringUtil.isByte(param);
+					case "Short" -> StringUtil.isShort(param);
+					case "Integer" -> StringUtil.isInteger(param);
+					case "Long" -> StringUtil.isLong(param);
+					case "Float" -> StringUtil.isFloat(param);
+					case "Double" -> StringUtil.isDouble(param);
+					case "Character" -> StringUtil.isCharacter(param);
+					default -> true;
+				};
 			}
 
 			return Arrays.asList(parameters).contains(param);

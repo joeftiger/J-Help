@@ -1,10 +1,10 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 import java.util.function.Consumer;
 
 public class HelpTarget {
-	private String target;
-	private Consumer<String> callback;
+	private final String target;
+	private final Consumer<String> callback;
 
 	/**
 	 * Constructs a HelpTarget without a callback.

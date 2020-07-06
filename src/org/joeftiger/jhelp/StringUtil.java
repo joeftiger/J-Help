@@ -1,4 +1,4 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,12 +7,11 @@ import java.util.stream.Collectors;
 
 public class HelpUsage {
 	private String programName;
-	private List<HelpTarget> targets;
+	private final List<HelpTarget> targets = new ArrayList<>();
 
 	private int index = 0;
 
 	public HelpUsage() {
-		targets = new ArrayList<>();
 		var stack = Thread.currentThread().getStackTrace();
 		setProgramName(null);
 	}

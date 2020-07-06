@@ -1,4 +1,4 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class JavaHelp {
 	private HelpUsage usage;
-	private List<HelpOption> options;
+	private final List<HelpOption> options = new ArrayList<>();
 	private boolean sortAlphabetically;
 
 	private int indent = 2;
@@ -19,7 +19,6 @@ public class JavaHelp {
 	private int paragraphLimit = 1024;
 
 	public JavaHelp() {
-		options = new ArrayList<>();
 		setUsage(new HelpUsage());
 	}
 

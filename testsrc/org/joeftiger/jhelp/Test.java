@@ -1,4 +1,4 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 public class Test {
 	public static void main(String[] args) {

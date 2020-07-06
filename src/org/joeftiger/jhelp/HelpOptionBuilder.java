@@ -1,4 +1,4 @@
-package org.joeftiger.javahelp;
+package org.joeftiger.jhelp;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,9 +7,9 @@ import java.util.function.Consumer;
 
 public class HelpOptionBuilder {
 
-	private List<String> optionInvokes;
+	private final List<String> optionInvokes;
 	private Class<?> parameterType;
-	private List<String> parameters;
+	private final List<String> parameters;
 	private Consumer<String> callback;
 	private String description = "";
 
