@@ -152,7 +152,7 @@ public class HelpOption {
 		 * @return {@code true} if empty. {@code false} if not.
 		 */
 		public boolean isEmpty() {
-			return Class == null || Class.isBlank() || parameters == null || parameters.length == 0;
+			return Class != null && !Class.isBlank() && parameters != null && parameters.length != 0;
 		}
 
 		/**
