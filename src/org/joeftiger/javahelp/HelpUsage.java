@@ -45,10 +45,6 @@ public class HelpUsage {
 		return this;
 	}
 
-	public HelpTarget[] getTargets() {
-		return targets.toArray(HelpTarget[]::new);
-	}
-
 	/**
 	 * Adds targets to this usage to display. These should be sorted.
 	 *
@@ -61,6 +57,10 @@ public class HelpUsage {
 	public HelpUsage addTargets(HelpTarget... targets) {
 		Collections.addAll(this.targets, targets);
 		return this;
+	}
+
+	public HelpTarget[] getTargets() {
+		return targets.toArray(HelpTarget[]::new);
 	}
 
 	/**
