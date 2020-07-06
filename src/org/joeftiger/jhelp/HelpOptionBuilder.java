@@ -5,18 +5,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static org.joeftiger.jhelp.HelpOption.OptionInvoke;
+import static org.joeftiger.jhelp.HelpOption.OptionParameter;
+
 public class HelpOptionBuilder {
 
-	private final List<String> optionInvokes;
+	private final List<String> optionInvokes = new ArrayList<>();
 	private Class<?> parameterType;
-	private final List<String> parameters;
+	private final List<String> parameters = new ArrayList<>();
 	private Consumer<String> callback;
 	private String description = "";
-
-	public HelpOptionBuilder() {
-		optionInvokes = new ArrayList<>();
-		parameters = new ArrayList<>();
-	}
 
 	/**
 	 * Adds invoke aliases to the option. <br> Examples:
@@ -41,7 +39,7 @@ public class HelpOptionBuilder {
 	 * @see #addParameters(String...)
 	 */
 	public HelpOptionBuilder setParameterType(Class<?> type) {
-		parameterType = type;
+		this.parameterType = type;
 		return this;
 	}
 
@@ -86,13 +84,13 @@ public class HelpOptionBuilder {
 	 * @return option
 	 */
 	public HelpOption build() {
-		HelpOption.OptionInvoke invoke = new HelpOption.OptionInvoke(optionInvokes.toArray(String[]::new));
+		var invoke = new OptionInvoke(optionInvokes.toArray(String[]::new));
 
-		HelpOption.OptionParameter parameter;
+		OptionParameter parameter;
 		if (parameterType != null) {
-			parameter = new HelpOption.OptionParameter(parameterType);
+			parameter = new OptionParameter(parameterType);
 		} else {
-			parameter = new HelpOption.OptionParameter(this.parameters.toArray(String[]::new));
+			parameter = new OptionParameter(this.parameters.toArray(String[]::new));
 		}
 
 		return new HelpOption(invoke, parameter, description, callback);

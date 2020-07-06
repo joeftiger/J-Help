@@ -1,16 +1,24 @@
 package org.joeftiger.jhelp;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StringUtil {
-	public static String[] splitPreservingWords(String text, int length) {
-		List<String> lines = new ArrayList<>();
-		String[] words = text.split(" ");
 
-		String line = "";
-		for (int i = 0; i < words.length; i++) {
-			String newLine = line + (i == 0 ? "" : " ") + words[i];
+	/**
+	 * Splits the given text into multiple lines with given maximum length. This split will conserve words according to
+	 * a "\\s+" regex.
+	 *
+	 * @param text   text to split
+	 * @param length maximum length per line
+	 * @return text lines
+	 */
+	public static String[] splitPreservingWords(String text, int length) {
+		var lines = new ArrayList<>();
+		var words = text.split("\\s+");
+
+		var line = "";
+		for (var i = 0; i < words.length; i++) {
+			var newLine = line + (i == 0 ? "" : " ") + words[i];
 
 			if (newLine.length() > length) {
 				lines.add(line);
@@ -25,6 +33,11 @@ public class StringUtil {
 		return lines.toArray(String[]::new);
 	}
 
+
+	/**
+	 * @param s string
+	 * @return whether the given string is a byte.
+	 */
 	public static boolean isByte(String s) {
 		try {
 			Byte.parseByte(s);
@@ -34,6 +47,11 @@ public class StringUtil {
 		}
 	}
 
+
+	/**
+	 * @param s string
+	 * @return whether the given string is a short.
+	 */
 	public static boolean isShort(String s) {
 		try {
 			Short.parseShort(s);
@@ -43,6 +61,11 @@ public class StringUtil {
 		}
 	}
 
+
+	/**
+	 * @param s string
+	 * @return whether the given string is a integer.
+	 */
 	public static boolean isInteger(String s) {
 		try {
 			Integer.parseInt(s);
@@ -52,6 +75,11 @@ public class StringUtil {
 		}
 	}
 
+
+	/**
+	 * @param s string
+	 * @return whether the given string is a long.
+	 */
 	public static boolean isLong(String s) {
 		try {
 			Long.parseLong(s);
@@ -61,6 +89,11 @@ public class StringUtil {
 		}
 	}
 
+
+	/**
+	 * @param s string
+	 * @return whether the given string is a float.
+	 */
 	public static boolean isFloat(String s) {
 		try {
 			Float.parseFloat(s);
@@ -70,6 +103,11 @@ public class StringUtil {
 		}
 	}
 
+
+	/**
+	 * @param s string
+	 * @return whether the given string is a double.
+	 */
 	public static boolean isDouble(String s) {
 		try {
 			Double.parseDouble(s);
@@ -79,6 +117,10 @@ public class StringUtil {
 		}
 	}
 
+	/**
+	 * @param s string
+	 * @return whether the given string is a character.
+	 */
 	public static boolean isCharacter(String s) {
 		return s != null && s.length() == 1;
 	}

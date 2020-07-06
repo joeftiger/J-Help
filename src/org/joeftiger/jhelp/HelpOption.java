@@ -10,6 +10,14 @@ public class HelpOption {
 	private final String description;
 	private final Consumer<String> callback;
 
+	/**
+	 * Creates a new Help option. It is recommended to use the specifically targeted {@link HelpOptionBuilder}.
+	 *
+	 * @param optionInvoke    invoke
+	 * @param optionParameter parameter
+	 * @param description     description
+	 * @param callback        callback
+	 */
 	public HelpOption(OptionInvoke optionInvoke, OptionParameter optionParameter, String description, Consumer<String> callback) {
 		this.optionInvoke = optionInvoke;
 		this.optionParameter = optionParameter;
@@ -18,7 +26,7 @@ public class HelpOption {
 	}
 
 	/**
-	 * @return {@link #toString(int 2)}
+	 * @return {@code this.toString(int 2)}
 	 */
 	@Override
 	public String toString() {
@@ -27,7 +35,7 @@ public class HelpOption {
 
 	/**
 	 * @param indent indentation
-	 * @return {@link #toString(int indent, int 24)}
+	 * @return {@code this.toString(int indent, int 24)}
 	 */
 	public String toString(int indent) {
 		return toString(indent, 24);
@@ -36,7 +44,7 @@ public class HelpOption {
 	/**
 	 * @param indent            identation
 	 * @param descriptionIndent description identation
-	 * @return {@link #toString(int indent, int descriptionIndent, int 1024)}
+	 * @return {@code this.toString(int indent, int descriptionIndent, int 1024)}
 	 */
 	public String toString(int indent, int descriptionIndent) {
 		return toString(indent, descriptionIndent, 1024);
@@ -49,7 +57,7 @@ public class HelpOption {
 	 * @return printable form of this Option
 	 */
 	public String toString(int indent, int descriptionIndent, int paragraphLimit) {
-		String out = optionInvoke.toString();
+		var out = optionInvoke.toString();
 		if (!optionParameter.isEmpty()) {
 			out += " " + optionParameter;
 		}
@@ -75,10 +83,7 @@ public class HelpOption {
 	 * @return {@code true} if match. {@code false} if not.
 	 */
 	public boolean matchesInvoke(String input) {
-		if (optionInvoke == null) {
-			return false;
-		}
-		return optionInvoke.matches(input);
+		return optionInvoke != null && optionInvoke.matches(input);
 	}
 
 	/**
@@ -95,10 +100,16 @@ public class HelpOption {
 		return optionParameter.matches(input);
 	}
 
+	/**
+	 * @return whether this option has specific parameters
+	 */
 	public boolean hasParameter() {
 		return optionParameter != null;
 	}
 
+	/**
+	 * @return option callback
+	 */
 	public Consumer<String> getCallback() {
 		return callback;
 	}
@@ -114,7 +125,7 @@ public class HelpOption {
 	}
 
 	static class OptionInvoke {
-		private String[] invokes;
+		private final String[] invokes;
 
 		public OptionInvoke(String[] invokes) {
 			this.invokes = invokes;
@@ -180,10 +191,10 @@ public class HelpOption {
 
 		@Override
 		public String toString() {
-			String format = "{%s}";
-			if (Class != null) {
-				return String.format(format, Class);
-			}
+			var format = "{%s}";
+
+			if (Class != null) return String.format(format, Class);
+
 			if (parameters == null || parameters.length == 0) return "";
 
 			return String.format(format, String.join(",", parameters));

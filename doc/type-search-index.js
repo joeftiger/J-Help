@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"org.joeftiger.jhelp","l":"HelpOption"},{"p":"org.joeftiger.jhelp","l":"HelpOptionBuilder"},{"p":"org.joeftiger.jhelp","l":"HelpTarget"},{"p":"org.joeftiger.jhelp","l":"HelpUsage"},{"p":"org.joeftiger.jhelp","l":"JavaHelp"},{"p":"org.joeftiger.jhelp","l":"StringUtil"}]

@@ -6,16 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class HelpUsage {
-	private String programName;
+	private String programName = "null";
 	private final List<HelpTarget> targets = new ArrayList<>();
 
 	private int index = 0;
 
-	public HelpUsage() {
-		var stack = Thread.currentThread().getStackTrace();
-		setProgramName(null);
-	}
-
+	/**
+	 * @return program name
+	 */
 	public String getProgramName() {
 		return programName;
 	}
@@ -38,7 +36,7 @@ public class HelpUsage {
 	 * @return this HelpUsage
 	 */
 	public HelpUsage addTargets(String... targets) {
-		for (String t : targets) {
+		for (var t : targets) {
 			this.targets.add(new HelpTarget(t));
 		}
 		return this;
@@ -58,6 +56,9 @@ public class HelpUsage {
 		return this;
 	}
 
+	/**
+	 * @return help targets
+	 */
 	public HelpTarget[] getTargets() {
 		return targets.toArray(HelpTarget[]::new);
 	}
@@ -122,7 +123,7 @@ public class HelpUsage {
 	 */
 	@Override
 	public String toString() {
-		String out = "USAGE:\n " + programName + " [options]";
+		var out = "USAGE:\n " + programName + " [options]";
 
 		if (!targets.isEmpty()) {
 			out += " " + targets.stream().map(HelpTarget::toString).collect(Collectors.joining(" "));

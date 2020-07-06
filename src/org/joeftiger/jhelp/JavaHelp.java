@@ -4,23 +4,19 @@ import java.util.*;
 
 /**
  * A help consists of a {@link HelpUsage} and multiple {@link HelpOption}s (created with the help of {@link
- * HelpOptionBuilder}. It can be queried for {@link #getOptionByInvoke(String)}.
+ * HelpOptionBuilder}). It can be queried for {@link #getOptionByInvoke(String)}.
  *
  * @author Julius Oeftiger
  * @version 0.1
  */
 public class JavaHelp {
-	private HelpUsage usage;
+	private HelpUsage usage = new HelpUsage();
 	private final List<HelpOption> options = new ArrayList<>();
 	private boolean sortAlphabetically;
 
 	private int indent = 2;
 	private int descriptionIndent = 24;
 	private int paragraphLimit = 1024;
-
-	public JavaHelp() {
-		setUsage(new HelpUsage());
-	}
 
 	/**
 	 * Sets the USAGE section
@@ -62,7 +58,7 @@ public class JavaHelp {
 	 * @return {@code true} if found. {@code false} if not.
 	 */
 	public boolean hasOptionInvoke(String input) {
-		for (HelpOption o : options) {
+		for (var o : options) {
 			if (o.matchesInvoke(input)) {
 				return true;
 			}
@@ -80,7 +76,7 @@ public class JavaHelp {
 	 * @throws NoSuchElementException if no option matches the given inp ut
 	 */
 	public HelpOption getOptionByInvoke(String input) throws NoSuchElementException {
-		for (HelpOption o : options) {
+		for (var o : options) {
 			if (o.matchesInvoke(input)) {
 				return o;
 			}
@@ -100,14 +96,14 @@ public class JavaHelp {
 		setDescriptionIndent(descriptionIndent);
 		setParagraphLimit(paragraphLimit);
 
-		StringBuilder sb = new StringBuilder();
+		var sb = new StringBuilder();
 
 		if (usage != null) {
 			sb.append(usage);
 		}
 
 		if (!options.isEmpty()) {
-			String[] opts = options.stream()
+			var opts = options.stream()
 					.map(i -> i.toString(indent, descriptionIndent, paragraphLimit))
 					.toArray(String[]::new);
 
@@ -118,7 +114,6 @@ public class JavaHelp {
 					.append("\n")
 					.append(String.join("\n", opts));
 		}
-
 
 		return sb.toString();
 	}
